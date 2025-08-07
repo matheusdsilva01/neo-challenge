@@ -7,11 +7,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR">
       <body>
-        <StoreProvider>
-          <StyledComponentsRegistry>
-            <ClientLayout>{children}</ClientLayout>
-          </StyledComponentsRegistry>
-        </StoreProvider>
+        <StyledComponentsRegistry>
+          <StoreProvider>
+              <ClientLayout>{children}</ClientLayout>
+          </StoreProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

@@ -9,6 +9,11 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    remotePatterns: [
+      { hostname:'i.annihil.us' }
+    ]
+  }
 };
 
 export default nextConfig;
