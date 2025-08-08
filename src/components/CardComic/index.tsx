@@ -10,17 +10,18 @@ type CardComicProps = {
 
 export const CardComic = ({ comic }: CardComicProps) => {
   return (
-			<Card href={`/comic/${comic.id}`}>
-				<Img width={550} height={820} src={buildImage(comic.thumbnail)} alt={`thumbnail quadrilho ${comic.title} `} />
-				<Content>
-						<p>{comic.title}</p>
-				</Content>
+    <Card href={`/comic/${comic.id}`}>
+      <Img width={550} height={820} src={buildImage(comic.thumbnail, 'portrait_uncanny')} alt={`thumbnail quadrilho ${comic.title} `} />
+      <Content>
+        <p>{comic.title}</p>
+      </Content>
 		</Card>
   )
 }
 
 const Card = styled(Link)`
     border-radius: 8px;
+    width: fit-content;
     position: relative;
     overflow: hidden;
     border: 1px #0F0F0F solid;
@@ -28,9 +29,10 @@ const Card = styled(Link)`
 
 const Img = styled(Image)`
     max-width: 165px;
-    max-height: 246px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
     display: block;
-		height: 100%;
 `
 
 const Content = styled.section`
@@ -41,7 +43,7 @@ const Content = styled.section`
     left: 0;
     bottom: 0;
     width: 100%;
-    font-size: 16px;
+    font-size: 1rem;
     overflow: hidden;
     max-height: calc(2em + 8px);
     transition: all 0.3s ease-in-out;

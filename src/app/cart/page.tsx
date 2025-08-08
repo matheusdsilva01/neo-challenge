@@ -28,16 +28,16 @@ const CartPage = () => {
 					<Row key={item.id}>
 						<Link href={`/comic/${item.id}`}>
 							<ItemCell>
-									<Img
-										src={buildImage(item.thumbnail)}
-										alt={`Thumbnail image comic: ${item.title}`}
-										width={64}
-										height={64}
-										/>
-									<div>
-										<p>{item.title}</p>
-										<UnitPrice>{formatCurrency().format(item.prices.find(el => el.type === 'printPrice')?.price || 0)}</UnitPrice>
-									</div>
+								<Img
+									src={buildImage(item.thumbnail, 'standard_fantastic')}
+									alt={`Thumbnail image comic: ${item.title}`}
+									width={64}
+									height={64}
+									/>
+								<div>
+									<p>{item.title}</p>
+									<UnitPrice>{formatCurrency().format(item.prices.find(el => el.type === 'printPrice')?.price || 0)}</UnitPrice>
+								</div>
 							</ItemCell>
 						</Link>
 						<ItemCell>
@@ -50,7 +50,7 @@ const CartPage = () => {
 								{formatCurrency().format((item.prices.find(el => el.type === 'printPrice')?.price || 0) * item.quantity)}
 							</h4>
 							<div>
-								<Btn disabled={!items.length} onClick={() => handleCheckout()}>
+								<Btn disabled={!items.length} onClick={() => dispatch(removeItem(item.id))}>
 									<Trash size={16} />
 								</Btn>
 							</div>
@@ -81,19 +81,17 @@ const List = styled.div`
 
 const Row = styled.div`
   display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	gap: 12px;
-  align-items: center;
   padding: 12px;
 
   &:not(:last-child) {
     border-bottom: 1px solid #eee;
   }
 
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr auto;
-    grid-auto-rows: auto;
-    row-gap: 8px;
+  @media (min-width: 520px) {
+		flex-direction: row;
   }
 `
 
@@ -142,10 +140,14 @@ const Strong = styled.span`
 
 const Footer = styled.div`
   display: flex;
+	flex-direction: column;
   align-items: center;
   gap: 12px;
   justify-content: flex-end;
   padding: 12px;
+	@media (min-width: 370px) {
+		flex-direction: row;
+	}
 `
 
 const Checkout = styled.button`

@@ -15,7 +15,7 @@ const baseButtonStyles = `
   display: inline-flex;
   align-items: center;
   padding: 8px 16px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 20px;
   border-radius: 6px;
@@ -114,7 +114,7 @@ const PageEllipsis = styled.span`
 `;
 
 const InfoText = styled.p`
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 20px;
   color: #4b5563;
 `;

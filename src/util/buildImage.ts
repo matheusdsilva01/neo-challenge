@@ -1,6 +1,9 @@
 import { Image } from '@/model/marvel/Comic';
 
-export function buildImage(img: Image): string {
-    const defaultVariant = 'portrait_incredible';
-    return `${img.path}/${defaultVariant}.${img.extension}`
+// https://developer.marvel.com/documentation/images
+type Variant = 'portrait_uncanny' | 'landscape_incredible' | 'standard_fantastic';
+
+export function buildImage(img: Image, variant?: Variant): string {
+    const variantPath = variant ? `/${variant}` : '';
+    return `${img.path}${variantPath}.${img.extension}`
 }

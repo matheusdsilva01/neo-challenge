@@ -13,7 +13,7 @@ const Home = () => {
 };
 
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 1.5rem;
 `;
 
 export default Home;

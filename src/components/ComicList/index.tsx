@@ -6,6 +6,7 @@ import { CardComic } from '@/components/CardComic';
 import { Pagination } from '@/components/Pagination';
 import { useState } from 'react';
 import { Skeleton } from '../CardComic/Skeleton';
+import { LoaderCircle } from 'lucide-react';
 
 export const ComicList = () => {
   const offset = 25
@@ -16,6 +17,7 @@ export const ComicList = () => {
   return (
     <>
       <Pagination page={page} totalPages={totalPages} onChangePage={(page) => setPage(page)} disabled={isLoading || isFetching} />
+      {isFetching && <Loader />}
       <Container>
         {isLoading && new Array(25).fill(1).map((_, i) => (
           <Skeleton key={i} />
@@ -25,14 +27,47 @@ export const ComicList = () => {
         )
       )}
       </Container>
+      {isFetching && <Loader />}
       <Pagination page={page} totalPages={totalPages} onChangePage={(page) => setPage(page)} disabled={isLoading || isFetching} />
     </>
   )
 }
 
-const Container = styled.section`
+
+const Loader = styled(LoaderCircle)`
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 46px;
-  row-gap: 26px;
+  margin: 4px auto;
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`
+
+const Container = styled.section`
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(1, minmax(165px, 1fr));
+  gap: 26px;
+
+  @media (min-width: 380px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 560px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 780px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: 980px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 `

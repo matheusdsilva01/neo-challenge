@@ -50,7 +50,7 @@ export const cartSlice = createAppSlice({
     selectTotalItems: (cart) => cart.items.length,
     selectQuantityItemsFromId: (cart, id) => cart.items.find(el => el.id === id)?.quantity,
     selectTotalPrice: (cart) =>
-      cart.items.reduce((total, item) => total + (item.prices.find(el => el.type === 'printPrice')?.price || 0), 0),
+      cart.items.reduce((total, item) => total + (item.prices.find(el => el.type === 'printPrice')?.price || 0) * item.quantity, 0),
   },
 })
 
