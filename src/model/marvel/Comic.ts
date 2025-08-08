@@ -72,7 +72,7 @@ export interface ComicDate {
 }
 
 export interface ComicPrice {
-    type: string;
+    type: 'printPrice' | 'digitalPurchasePrice';
     price: number;
 }
 

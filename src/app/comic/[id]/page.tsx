@@ -1,7 +1,9 @@
 'use client'
 
 import { RootLayout } from '@/layouts/RootLayout'
+import { addItem, decreaseQuantity, increaseQuantity, selectQuantityItemsFromId, selectTotalPrice } from '@/lib/redux/features/cart/cartSlice'
 import { useGetComicQuery } from '@/lib/redux/features/marvel/marvelComicsApiSlice'
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks'
 import { buildImage } from '@/util/buildImage'
 import { formatCurrency } from '@/util/formatCurrency'
 import Image from 'next/image'
@@ -15,7 +17,9 @@ type PageProps = {
 
 const ComicPage = ({ params }: PageProps) => {
 	const { id } = use(params)
-	const { data, isLoading } = useGetComicQuery(id)
+  const dispatch = useAppDispatch();
+  const { data, isLoading } = useGetComicQuery(id)
+  const quantity = useAppSelector((store) => selectQuantityItemsFromId(store, Number(id)))
 
 	if (isLoading || !data) {
     return 'loading'
@@ -34,9 +38,19 @@ const ComicPage = ({ params }: PageProps) => {
         <div>
           <Title>{comic?.title}</Title>
           <Price>{formatCurrency().format(price)}</Price>
-					<Button>
-						Adicionar ao carrinho
-					</Button>
+          {!!quantity ? (
+            <>
+              <p>Você tem {quantity} item(s) no carrinho</p>
+              <Button onClick={() => dispatch(decreaseQuantity(Number(id)))}>Remover</Button>
+              <Button onClick={() => dispatch(increaseQuantity(Number(id)))}>Adicionar</Button>
+            </>
+          ) : (
+            <Button
+              onClick={() => dispatch(addItem(comic))}
+            >
+              Adicionar ao carrinho
+            </Button>
+          )}
           <SectionTitle>Descrição</SectionTitle>
           <Text>{comic?.description || 'Descrição não disponível.'}</Text>
           {comic && comic.creators.items.length > 0 && (
