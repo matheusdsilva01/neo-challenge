@@ -15,6 +15,7 @@ export const marvelApiSlice = createApi({
 				searchParams.append('apikey', apikeypublic as string)
 				searchParams.append('limit', '25')
 				searchParams.append('offset', offset.toString())
+				searchParams.append('orderBy', '-onsaleDate')
 				return '?' + searchParams.toString()
 			},
 		}),

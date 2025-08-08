@@ -2,6 +2,7 @@
 
 import { RootLayout } from '@/layouts/RootLayout'
 import { useGetComicQuery } from '@/lib/redux/features/marvel/marvelComicsApiSlice'
+import { buildImage } from '@/util/buildImage'
 import { formatCurrency } from '@/util/formatCurrency'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,14 +23,13 @@ const ComicPage = ({ params }: PageProps) => {
 
   const comic = data.data.results[0]
   const price = comic.prices.find((p) => p.type === 'printPrice')?.price ?? 0
-  const thumbnail = `${comic.thumbnail.path}.${comic.thumbnail.extension}`
 
 	return (
     <RootLayout>
       <Back href="/comics">← Voltar</Back>
       <Container>
         <div>
-          <Cover width={550} height={820} src={thumbnail} alt={`thumbnail comic: ${comic.title}`} />
+          <Cover width={550} height={820} src={buildImage(comic.thumbnail)} alt={`thumbnail comic: ${comic.title}`} />
         </div>
         <div>
           <Title>{comic?.title}</Title>
