@@ -1,34 +1,19 @@
-'use client';
-import Head from 'next/head';
-import {
-  Container,
-  Main,
-  Title,
-  Description,
-  CodeTag,
-} from '@/components/sharedstyles';
-import Cards from '@/components/cards';
+'use client'
+import { ComicList } from '@/components/ComicList';
+import { RootLayout } from '@/layouts/RootLayout';
+import styled from 'styled-components';
 
-export default function Home() {
+const Home = () => {
   return (
-    <Container>
-      <Head>
-        <title>NeoChallenge Marvel</title>
-        <meta name="description" content="desafio técnico da empresa NeoApp" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Main>
-        <Title>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </Title>
-
-        <Description>
-          Get started by editing
-          <CodeTag>app/page.tsx</CodeTag>
-        </Description>
-
-        <Cards />
-      </Main>
-    </Container>
+    <RootLayout>
+      <Title>Marvel Comics</Title>
+      <ComicList />
+    </RootLayout>
   );
-}
+};
+
+const Title = styled.h1`
+  font-size: 1.5rem;
+`;
+
+export default Home;

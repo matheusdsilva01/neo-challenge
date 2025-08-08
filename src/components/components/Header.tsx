@@ -9,9 +9,9 @@ export const Header = () => {
   return (
     <HeaderComp>
 			<NavWrapper>
-				<NavLink href="/comics">Marvel Shop</NavLink>
+				<NavLink href="/">Marvel Shop</NavLink>
 				<Nav>
-					<NavLink href="/comics">
+					<NavLink href="/">
 						Comics
 					</NavLink>
 					<NavLink href="/cart">
