@@ -19,6 +19,14 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  button {
+    cursor: pointer;
+  }
+
+  p {
+    line-height: 1em;
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;
