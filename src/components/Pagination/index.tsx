@@ -214,6 +214,7 @@ export const Pagination = ({ page, totalPages, onChangePage, disabled }: Paginat
 
         {hasMorePages ? (
           <NavLink
+            data-testid="next-page-mobile"
             onClick={() => onChangePage(page + 1)}
           >
             Próximo
@@ -237,17 +238,16 @@ export const Pagination = ({ page, totalPages, onChangePage, disabled }: Paginat
             {/* Previous Page Link */}
             {isFirstPage ? (
               <span>
-                <NavSpan className="nav-icon">
-                  <ChevronLeftIcon className="w-5 h-5" />
+                <NavSpan>
+                  <ChevronLeftIcon/>
                 </NavSpan>
               </span>
             ) : (
               <PageLink
                 disabled={disabled}
                 onClick={() => onChangePage(page - 1)}
-                className="nav-icon"
               >
-                <ChevronLeftIcon className="w-5 h-5" />
+                <ChevronLeftIcon/>
               </PageLink>
             )}
 
@@ -278,16 +278,16 @@ export const Pagination = ({ page, totalPages, onChangePage, disabled }: Paginat
             {/* Next Page Link */}
             {hasMorePages ? (
               <PageLink
+                data-testid="next-page-desktop"
                 onClick={() => onChangePage(page + 1)}
                 disabled={disabled}
-                className="nav-icon"
               >
-                <ChevronRightIcon className="w-5 h-5" />
+                <ChevronRightIcon/>
               </PageLink>
             ) : (
               <span>
-                <NavSpan className="nav-icon">
-                  <ChevronRightIcon className="w-5 h-5" />
+                <NavSpan>
+                  <ChevronRightIcon/>
                 </NavSpan>
               </span>
             )}
