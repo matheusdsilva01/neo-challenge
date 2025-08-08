@@ -1,4 +1,5 @@
 import { Comic } from '@/model/marvel/Comic'
+import { buildImage } from '@/util/buildImage'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
@@ -10,7 +11,7 @@ type CardComicProps = {
 export const CardComic = ({ comic }: CardComicProps) => {
   return (
 			<Card href={`/comic/${comic.id}`}>
-				<Img width={550} height={820} src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={`thumbnail quadrilho ${comic.title} `} />
+				<Img width={550} height={820} src={buildImage(comic.thumbnail)} alt={`thumbnail quadrilho ${comic.title} `} />
 				<Content>
 						<p>{comic.title}</p>
 				</Content>
@@ -40,4 +41,20 @@ const Content = styled.section`
     left: 0;
     bottom: 0;
     width: 100%;
+    font-size: 16px;
+    overflow: hidden;
+    max-height: calc(2em + 8px);
+    transition: all 0.3s ease-in-out;
+    p {
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+    &:hover {
+      max-height: 500px;
+      p  {
+        -webkit-line-clamp: unset;
+      }
+    }
 `

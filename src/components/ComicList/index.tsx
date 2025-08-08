@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { CardComic } from '@/components/CardComic';
 import { Pagination } from '@/components/Pagination';
 import { useState } from 'react';
+import { Skeleton } from '../CardComic/Skeleton';
 
 export const ComicList = () => {
   const offset = 25
@@ -16,6 +17,9 @@ export const ComicList = () => {
     <>
       <Pagination page={page} totalPages={totalPages} onChangePage={(page) => setPage(page)} disabled={isLoading || isFetching} />
       <Container>
+        {isLoading && new Array(25).fill(1).map((_, i) => (
+          <Skeleton key={i} />
+        ))}
         {data?.data?.results.map(comic => (
           <CardComic key={comic.id} comic={comic} />
         )
