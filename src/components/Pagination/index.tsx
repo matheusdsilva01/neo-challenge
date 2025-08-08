@@ -40,24 +40,6 @@ const baseButtonStyles = `
     color: #4b5563;
   }
 
-  .dark & {
-    background-color: #1f2937;
-    border-color: #4b5563;
-    color: #d1d5db;
-    
-    &:hover {
-      color: #9ca3af;
-    }
-
-    &:active {
-      background-color: #374151;
-      color: #d1d5db;
-    }
-
-    &:focus {
-      border-color: #3b82f6;
-    }
-  }
 `;
 
 const NavLink = styled.button`
@@ -68,10 +50,6 @@ const NavSpan = styled.span`
   ${baseButtonStyles}
   cursor: default;
   color: #9ca3af;
-
-  .dark & {
-    color: #6b7280;
-  }
 `;
 
 // Estilos para o grupo de botões de desktop
@@ -112,15 +90,6 @@ const PageLink = styled.button<{ active?: string }>`
     &:hover {
       color: #ffffff;
     }
-
-    .dark & {
-      background-color: #1d4ed8;
-      border-color: #1d4ed8;
-      
-      &:hover {
-        color: #ffffff;
-      }
-    }
   `}
 
  
@@ -142,20 +111,12 @@ const PageEllipsis = styled.span`
   cursor: default;
   color: #4b5563;
   border-radius: 0;
-
-  .dark & {
-    color: #d1d5db;
-  }
 `;
 
 const InfoText = styled.p`
   font-size: 14px;
   line-height: 20px;
   color: #4b5563;
-
-  .dark & {
-    color: #9ca3af;
-  }
 `;
 
 const InfoNumber = styled.span`
@@ -238,7 +199,6 @@ export const Pagination = ({ page, totalPages, onChangePage, disabled }: Paginat
   return (
     <NavContainer
       role="navigation"
-      aria-label="Navegação de Paginação"
     >
       {/* Mobile view */}
       <MobileView>
@@ -276,7 +236,7 @@ export const Pagination = ({ page, totalPages, onChangePage, disabled }: Paginat
           <PageGroupContainer>
             {/* Previous Page Link */}
             {isFirstPage ? (
-              <span aria-disabled="true" aria-label="Página anterior">
+              <span>
                 <NavSpan className="nav-icon">
                   <ChevronLeftIcon className="w-5 h-5" />
                 </NavSpan>
@@ -286,7 +246,6 @@ export const Pagination = ({ page, totalPages, onChangePage, disabled }: Paginat
                 disabled={disabled}
                 onClick={() => onChangePage(page - 1)}
                 className="nav-icon"
-                aria-label="Página anterior"
               >
                 <ChevronLeftIcon className="w-5 h-5" />
               </PageLink>
@@ -310,8 +269,6 @@ export const Pagination = ({ page, totalPages, onChangePage, disabled }: Paginat
                   disabled={disabled}
                   onClick={() => onChangePage(pageNum)}
                   active={String(isCurrentPage)}
-                  aria-current={isCurrentPage ? 'page' : undefined}
-                  aria-label={`Ir para página ${pageNum}`}
                 >
                   {pageNum}
                 </PageLink>
@@ -324,12 +281,11 @@ export const Pagination = ({ page, totalPages, onChangePage, disabled }: Paginat
                 onClick={() => onChangePage(page + 1)}
                 disabled={disabled}
                 className="nav-icon"
-                aria-label="Próxima página"
               >
                 <ChevronRightIcon className="w-5 h-5" />
               </PageLink>
             ) : (
-              <span aria-disabled="true" aria-label="Próxima página">
+              <span>
                 <NavSpan className="nav-icon">
                   <ChevronRightIcon className="w-5 h-5" />
                 </NavSpan>

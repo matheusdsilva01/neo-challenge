@@ -37,13 +37,17 @@ export interface Comic {
     collections: ComicSummary;
     collectedIssues: ComicSummary;
     dates: ComicDate;
-    prices: ComicPrice;
+    prices: ComicPrice[];
     thumbnail: Image;
     images: Image;
     creators: ResourceList<CreatorSummary>;
     characters: ResourceList<CharacterSummary>;
     stories: ResourceList<StorySummary>;
     events: ResourceList<EventSummary>;
+}
+
+export interface CreatorSummary extends ResourceSummary {
+    role: string;
 }
 
 export interface Url {
@@ -81,9 +85,6 @@ export interface ComicSummary extends ResourceSummary {}
 
 export interface SeriesSummary extends ResourceSummary {}
 
-export interface CreatorSummary extends ResourceSummary {
-    role: string;
-}
 
 export interface CharacterSummary extends ResourceSummary {}
 
@@ -97,5 +98,5 @@ export interface ResourceList<T extends ResourceSummary> {
     available: number;
     returned: number;
     collectionURI: string;
-    items: T;
+    items: T[];
 }
