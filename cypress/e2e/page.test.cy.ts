@@ -53,7 +53,7 @@ describe('Home page e2e', () => {
   before(() => {
     cy.intercept({
       method: 'GET',
-      url: '**/gateway.marvel.com/v1/public/comics/376',
+      url: '**/gateway.marvel.com/v1/public/comics/376**',
     }, {
       fixture: 'marvel/comic-376.json',
     })

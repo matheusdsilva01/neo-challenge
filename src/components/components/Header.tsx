@@ -15,7 +15,7 @@ export const Header = () => {
 						Comics
 					</NavLink>
 					<NavLink href="/cart">
-						Cart
+						Carrinho
 						{totalItems > 0 && <CartBadge >{totalItems}</CartBadge>}
 					</NavLink>
 				</Nav>
