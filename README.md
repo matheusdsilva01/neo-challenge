@@ -8,6 +8,8 @@ Aplicação Next.js(App Router) para listar HQs da Marvel(Referências 13), visu
 
 Fluxo: Usuário navega, seleciona HQs, adiciona ao carrinho e finaliza (estado é resetado ao recarregar a página por que não há persistência dos dados do carrinho).
 
+Acesse a aplicação aqui -> [https://marvelcomics-nu.vercel.app](https://marvelcomics-nu.vercel.app).
+
 ## 2. Dependências/Bibliotecas
 - `next`: Framework React, roteamento via App Router.
 - `typescript`: Tipagem da aplicação.
@@ -27,7 +29,7 @@ NEXT_PUBLIC_MARVEL_PUBLIC_API_KEY=<chave>
 ## 4. Comandos Principais
 Antes instale as dependências: usando `npm install`
 ```powershell
-# Executa projeto localmente, certifique-se de ter criado o arquivo .env (3. Variáveis de Ambiente)
+# Executa projeto localmente na rota: http://localhost:3000, certifique-se de ter criado o arquivo .env (3. Variáveis de Ambiente)
 npm run dev
 
 # Lint
