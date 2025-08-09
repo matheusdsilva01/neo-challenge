@@ -52,7 +52,6 @@ const NavSpan = styled.span`
   color: #9ca3af;
 `;
 
-// Estilos para o grupo de botões de desktop
 const PageGroupContainer = styled.span`
   position: relative;
   z-index: 0;
