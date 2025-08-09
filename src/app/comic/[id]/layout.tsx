@@ -11,7 +11,7 @@ type LayoutComicDetailProps = {
 const LayoutComicDetail = ({ children }: LayoutComicDetailProps) => {
 	return (
 		<RootLayout>
-			<Back href="/comics">← Voltar</Back>
+			<Back href="/">← Voltar</Back>
 			{children}
 		</RootLayout>
 	)
