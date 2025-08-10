@@ -4,7 +4,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const marvelApiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl:
     'https://gateway.marvel.com/v1/public/comics',
-	}),
+	cache: 'force-cache',
+  }),
   reducerPath: 'comicsApi',
   tagTypes: ['comics'],
   endpoints: (build) => ({
